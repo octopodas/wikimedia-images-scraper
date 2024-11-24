@@ -1,5 +1,5 @@
-const searchWikimediaImages = require('./scrape');
-const saveSearchResults = require('./saveResults');
+import searchWikimediaImages from './scrape.js';
+import saveSearchResults from './saveResults.js';
 
 async function main() {
   const searchTerm = process.argv[2];
@@ -43,4 +43,4 @@ async function main() {
   });
 }
 
-main().catch(console.error); 
+main().catch(console.error);

@@ -1,16 +1,21 @@
-const fs = require('fs/promises');
-const path = require('path');
+import { promises as fs } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function saveSearchResults(searchTerm, images) {
   try {
     // Create results directory if it doesn't exist
-    const resultsDir = path.join(process.cwd(), 'results');
+    const resultsDir = join(dirname(__dirname), 'results');
     await fs.mkdir(resultsDir, { recursive: true });
 
     // Create filename with timestamp
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = `${searchTerm}_${timestamp}.json`;
-    const filepath = path.join(resultsDir, filename);
+    const filepath = join(resultsDir, filename);
 
     // Format the data
     const searchResults = {
@@ -39,4 +44,4 @@ async function saveSearchResults(searchTerm, images) {
   }
 }
 
-module.exports = saveSearchResults; 
+export default saveSearchResults;

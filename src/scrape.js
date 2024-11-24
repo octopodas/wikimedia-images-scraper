@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 async function searchWikimediaImages(searchTerm, numberOfImages = 3) {
   try {
@@ -52,4 +52,4 @@ async function searchWikimediaImages(searchTerm, numberOfImages = 3) {
   }
 }
 
-module.exports = searchWikimediaImages; 
+export default searchWikimediaImages;
